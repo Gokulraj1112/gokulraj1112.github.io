@@ -1,0 +1,166 @@
+{
+  "personal": {
+    "name": "GokulRaj Settu",
+    "title": "Java Full Stack Developer",
+    "email": "gokulrajsettu.developer@gmail.com",
+    "phone": "+91 8248733117",
+    "location": "Chennai, India",
+    "website": "https://gokulraj.dev",
+    "github": "https://github.com/Gokulraj1112",
+    "linkedin": "https://www.linkedin.com/in/gokulraj-s-8a51b7235/",
+    "twitter": "https://twitter.com/",
+    "bio": "Enthusiastic Java Full Stack Developer skilled in JSP, Servlets, JDBC, MySQL, Angular, HTML, CSS, and JavaScript. Passionate about building scalable and user-friendly applications.",
+    "avatar": "/assets/image/1000341995.jpg"
+  },
+  "about": {
+    "description": "I’m a dedicated Java Full Stack Developer with expertise in modern web technologies. I enjoy solving real-world problems through scalable, efficient, and user-friendly applications. With a strong foundation in Java and front-end technologies, I continuously explore new tools and frameworks to grow as a developer.",
+    "highlights": [
+      "Completed Full Stack Development training at Accord Info Matrix",
+      "Skilled in Java, JSP, Servlets, JDBC, Angular, and MySQL",
+      "Experience with dynamic web application projects",
+      "Strong knowledge in database design and optimization",
+      "Quick learner and collaborative team player"
+    ]
+  },
+  "skills": [
+    {
+      "category": "Frontend",
+      "technologies": [
+        { "name": "Angular", "level": 80, "icon": "🅰️" },
+        { "name": "JavaScript", "level": 85, "icon": "🟨" },
+        { "name": "TypeScript", "level": 75, "icon": "📘" },
+        { "name": "HTML/CSS", "level": 90, "icon": "🌐" },
+        { "name": "Bootstrap", "level": 80, "icon": "🅱️" }
+      ]
+    },
+    {
+      "category": "Backend",
+      "technologies": [
+        { "name": "Java", "level": 90, "icon": "☕" },
+        { "name": "JSP/Servlets", "level": 85, "icon": "📄" },
+        { "name": "JDBC", "level": 82, "icon": "🔌" },
+        { "name": "Spring Boot", "level": 70, "icon": "🌱" }
+      ]
+    },
+    {
+      "category": "Database",
+      "technologies": [
+        { "name": "MySQL", "level": 85, "icon": "🐬" },
+        { "name": "Oracle DB", "level": 70, "icon": "🏛️" }
+      ]
+    },
+    {
+      "category": "Tools & Others",
+      "technologies": [
+        { "name": "Git", "level": 85, "icon": "🔧" },
+        { "name": "Tomcat", "level": 80, "icon": "🐱" },
+        { "name": "VS Code", "level": 85, "icon": "💻" },
+        { "name": "Eclipse/STS", "level": 80, "icon": "🛠️" }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "A Contemporary Guideline Based Aegis Mechanism for Gateway",
+      "description": "A Java Full Stack project implementing a secure gateway mechanism with JSP, Servlets, JDBC, and MySQL for efficient access management.",
+      "image": "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "technologies": ["Java", "JSP", "Servlets", "JDBC", "MySQL", "HTML", "CSS"],
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/gokulrajsettu/aegis-gateway",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Cricket Scoring Application",
+      "description": "A fully dynamic web-based cricket scoring application developed with JSP and Java, designed to manage live match scores efficiently.",
+      "image": "/assets/image/1000398398.jpg",
+      "technologies": ["Java", "JSP", "Servlets", "JDBC", "MySQL", "Bootstrap"],
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/gokulrajsettu/cricket-scoring",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Love Star Cricket Club Website",
+      "description": "Designed and developed a website and branding logo for my cricket team 'Love Star Cricket Club' with team details and match highlights.",
+      "image": "https://images.pexels.com/photos/1407326/pexels-photo-1407326.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/gokulrajsettu/lovestar-cricket-club",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "Portfolio Website",
+      "description": "Personal portfolio website showcasing my resume, skills, and projects using Angular framework.",
+      "image": "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "technologies": ["Angular", "HTML", "CSS", "JavaScript"],
+      "liveUrl": "https://gokulraj.dev",
+      "githubUrl": "https://github.com/gokulrajsettu/portfolio",
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Mini Projects (Accord Training)",
+      "description": "Set of hands-on mini projects developed during Full Stack training at Accord, including Library Management System, Student Portal, and JDBC CRUD operations.",
+      "image": "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "technologies": ["Java", "JDBC", "MySQL", "JSP", "Servlets"],
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/gokulrajsettu/accord-mini-projects",
+      "featured": false
+    }
+  ],
+  "experience": [
+    {
+      "title": "Java Full Stack Developer Intern",
+      "company": "GradTwin",
+      "location": "Remote",
+      "startDate": "2024-10-01",
+      "endDate": "2025-01-31",
+      "current": false,
+      "description": "Worked as a Java Full Stack Intern developing dynamic web applications using Java, JSP, Servlets, JDBC, and Angular.",
+      "achievements": [
+        "Built and deployed responsive web modules for client requirements",
+        "Integrated JDBC with MySQL for backend operations",
+        "Collaborated with senior developers on live projects",
+        "Enhanced application performance through optimized queries"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering in Computer Science and Engineering",
+      "school": "Muthayammal College of Engineering",
+      "location": "Rasipuram, India",
+      "startDate": "2019-07-01",
+      "endDate": "2023-05-31",
+      "gpa": "First Class",
+      "description": "Focused on software development, data structures, algorithms, and web technologies."
+    },
+    {
+      "degree": "Java Full Stack Development Certification",
+      "school": "Accord Info Matrix",
+      "location": "Chennai, India",
+      "startDate": "2024-01-01",
+      "endDate": "2024-06-01",
+      "description": "Completed hands-on training in Java Full Stack Development including Angular, JSP, Servlets, and MySQL."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Trainer, Accord Info Matrix",
+      "position": "Senior Full Stack Trainer",
+      "company": "Accord Info Matrix",
+      "content": "GokulRaj is a quick learner and has shown strong dedication in mastering Full Stack Development. He is capable of handling projects independently.",
+      "avatar": "https://images.pexels.com/photos/3778876/pexels-photo-3778876.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    },
+    {
+      "name": "Mentor",
+      "position": "Project Mentor",
+      "company": "GradTwin",
+      "content": "During his internship, GokulRaj showed strong skills in Java Full Stack Development and contributed effectively to live projects.",
+      "avatar": "https://images.pexels.com/photos/3778967/pexels-photo-3778967.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+    }
+  ]
+}
