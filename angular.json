@@ -26,15 +26,17 @@
             }
           },
           "options": {
-            "assets": ["src/assets"],
-            "index": "src/index.html",
-            "browser": "src/main.ts",
-            "outputPath": "dist/demo",
-            "polyfills": ["zone.js"],
-            "scripts": [],
-            "styles": ["src/global_styles.css"],
-            "tsConfig": "tsconfig.app.json"
-          }
+  "assets": ["src/assets"],
+  "index": "src/index.html",
+  "browser": "src/main.ts",
+  "outputPath": "docs",
+  "polyfills": ["zone.js"],
+  "scripts": [],
+  "styles": ["src/global_styles.css"],
+  "tsConfig": "tsconfig.app.json",
+  "baseHref": "/portfolio/"
+}
+
         },
         "serve": {
           "builder": "@angular/build:dev-server",
