@@ -96,7 +96,7 @@ export class PortfolioService {
     }
 
     try {
-      const response = await fetch('/assets/data/portfolio.json');
+      const response = await fetch('assets/data/portfolio.json');
       this.portfolioData = await response.json();
       return this.portfolioData!;
     } catch (error) {
