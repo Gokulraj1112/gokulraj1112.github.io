@@ -1,167 +1,184 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ContactService, User } from '../../services/contact.service';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <section id="contact" class="contact-section bg-dark-theme">
+    <section id="contact" class="py-5 bg-dark-theme">
       <div class="container">
-        <h2 class="section-title text-center">Contact Me</h2>
+        <div class="text-center mb-5">
+          <h2 class="section-title">Get in Touch</h2>
+          <p class="section-subtitle">🚀 From concept to creation, every journey starts with hello.</p>
+        </div>
 
-        <form (ngSubmit)="submitForm()" #contactForm="ngForm" class="contact-form">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input id="name" name="name" [(ngModel)]="formData.name" required />
-          </div>
+        <div class="form-wrapper">
+          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+            <div class="form-group">
+              <input type="text" name="name" [(ngModel)]="formData.name" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" [(ngModel)]="formData.email" placeholder="Your Email" required />
+            </div>
+            <div class="form-group">
+              <input type="tel" name="phone" [(ngModel)]="formData.phone" placeholder="Your Contact Number" required />
+            </div>
+            <div class="form-group">
+              <textarea name="message" [(ngModel)]="formData.message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit" [disabled]="loading || contactForm.invalid">
+              {{ loading ? 'Sending...' : 'Send Message' }}
+            </button>
+          </form>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" [(ngModel)]="formData.email" required />
-          </div>
-
-          <div class="form-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input id="phoneNumber" name="phoneNumber" [(ngModel)]="formData.phoneNumber" required />
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" [(ngModel)]="formData.message" required></textarea>
-          </div>
-
-          <button type="submit" [disabled]="loading">
-            {{ loading ? 'Sending...' : 'Send Message' }}
-          </button>
-        </form>
-
-        <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
-        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+          <!-- Success & Error Messages -->
+          <p *ngIf="successMessage" class="success-msg">{{ successMessage }}</p>
+          <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+        </div>
       </div>
     </section>
   `,
-  styles: [`
-    .bg-dark-theme { background-color: #111; padding: 40px 20px; border-radius: 12px; }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 2rem;
-      position: relative;
+    styles: [`
+    .bg-dark-theme {
+      background-color: #111;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
     }
 
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #00e0ff;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -8px;
       left: 50%;
       transform: translateX(-50%);
       width: 60px;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(to right, #00e0ff, #ff00ff);
       border-radius: 2px;
     }
+    .section-subtitle {
+      color: #aaa;
+      font-size: 1.2rem;
+    }
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
+    .form-wrapper {
+      max-width: 600px;
       margin: 0 auto;
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 224, 255, 0.1);
+      border-left: 3px solid #00e0ff;
+      transition: all 0.3s ease;
+    }
+    .form-wrapper:hover {
+      border-left-color: #ff00ff;
+      box-shadow: 0 10px 30px rgba(255, 0, 255, 0.2);
     }
 
     .form-group {
-      display: flex;
-      flex-direction: column;
+      margin-bottom: 1.5rem;
     }
-
-    label {
-      margin-bottom: 5px;
-      font-weight: bold;
-      color: #ccc;
-    }
-
     input, textarea {
-      padding: 10px;
-      border: 1px solid rgba(255,255,255,0.2);
+      width: 100%;
+      padding: 12px 15px;
+      background: #222;
+      border: 1px solid #333;
       border-radius: 6px;
-      background: #1a1a1a;
-      color: white;
-      transition: all 0.3s ease;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s;
     }
-
     input:focus, textarea:focus {
       border-color: #00e0ff;
-      box-shadow: 0 0 10px #00e0ff;
-      outline: none;
+      box-shadow: 0 0 8px rgba(0, 224, 255, 0.3);
     }
 
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    button {
-      background: linear-gradient(to right, #00e0ff, #ff00ff);
-      color: white;
+    .btn-submit {
+      background: linear-gradient(90deg, #00e0ff, #ff00ff);
       border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: bold;
+      padding: 12px 25px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
       cursor: pointer;
       transition: all 0.3s ease;
+      width: 100%;
     }
-
-    button:hover:not(:disabled) {
+    .btn-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 10px #00e0ff, 0 0 20px #ff00ff;
+      box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
     }
 
-    button:disabled {
-      background: #6c757d;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-
-    .success, .error {
+    .success-msg {
+      margin-top: 1rem;
+      color: #00ff9d;
+      font-weight: 600;
       text-align: center;
-      margin-top: 15px;
-      font-weight: bold;
-      text-shadow: 0 0 2px black;
     }
-
-    .success { color: #00e0ff; }
-    .error { color: #ff4d4f; }
+    .error-msg {
+      margin-top: 1rem;
+      color: #ff4d6d;
+      font-weight: 600;
+      text-align: center;
+    }
 
     @media (max-width: 768px) {
-      .section-title { font-size: 2rem; }
+      .section-title { font-size: 2.2rem; }
+      .form-wrapper { padding: 1.5rem; }
     }
   `]
 })
 export class ContactComponent {
-  formData: User = { name: '', email: '', phoneNumber: '', message: '' };
+  formData = {
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  };
+
   loading = false;
   successMessage = '';
   errorMessage = '';
 
-  constructor(private contactService: ContactService) {}
+  async onSubmit(form: NgForm) {
+    if (form.invalid) return;
 
-  async submitForm() {
     this.loading = true;
     this.successMessage = '';
     this.errorMessage = '';
 
     try {
-      await this.contactService.addUser(this.formData);
-      this.successMessage = 'Your message has been sent successfully!';
-      this.formData = { name: '', email: '', phoneNumber: '', message: '' };
-    } catch (err) {
-      console.error(err);
-      this.errorMessage = 'Failed to send your message. Please try again.';
+      const response = await fetch("https://formspree.io/f/myzddpaa", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"   // 🔑 Important for Formspree
+        },
+        body: JSON.stringify(this.formData)
+      });
+
+      if (response.ok) {
+        this.successMessage = "✅ Thank you! Your message has been sent.";
+        form.resetForm();
+      } else {
+        this.errorMessage = "❌ Oops! Something went wrong.";
+      }
+    } catch (error) {
+      this.errorMessage = "⚠️ Network error. Please try again.";
     } finally {
       this.loading = false;
     }

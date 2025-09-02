@@ -11,7 +11,9 @@ import { PortfolioService, Education } from '../../services/portfolio.service';
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="section-title">Education</h2>
-          <p class="section-subtitle">My Academic Background</p>
+
+          <p class="section-subtitle">
+          🎓 "A journey of learning that built the foundation of my career."</p>
         </div>
 
         <div class="timeline">

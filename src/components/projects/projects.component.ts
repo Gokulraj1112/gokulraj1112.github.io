@@ -11,7 +11,7 @@ import { PortfolioService, Project } from '../../services/portfolio.service';
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="section-title">Featured Projects</h2>
-          <p class="section-subtitle">Some of my recent work</p>
+          <p class="section-subtitle">💡 "Where creativity meets code and innovation takes shape."</p>
         </div>
         
         <div class="row mt-5">

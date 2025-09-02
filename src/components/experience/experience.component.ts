@@ -11,7 +11,7 @@ import { PortfolioService, Experience } from '../../services/portfolio.service';
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="section-title">Work Experience</h2>
-          <p class="section-subtitle">My Professional Journey</p>
+          <p class="section-subtitle">⚡ "Every role sharpened my skills, every project fueled my growth."</p>
         </div>
 
         <div class="timeline">

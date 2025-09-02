@@ -11,7 +11,7 @@ import { PortfolioService, Certification } from '../../services/portfolio.servic
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="section-title">Certifications</h2>
-          <p class="section-subtitle">Credentials & Achievements</p>
+          <p class="section-subtitle">🏆 "Every certificate tells a story of growth."</p>
         </div>
 
         <div class="timeline">

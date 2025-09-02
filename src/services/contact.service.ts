@@ -1,41 +1,38 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
 
-export interface User {
-  id?: number;
+export interface ContactMessage {
   name: string;
   email: string;
-  phoneNumber: string;
   message: string;
+  date: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactService {
-  private apiUrl = 'http://localhost:8080/users'; // Spring Boot backend URL
+  private storageKey = 'messages';
 
-  constructor(private http: HttpClient) {}
-
-  // Get all users
-  async getUsers(): Promise<User[]> {
-    return firstValueFrom(this.http.get<User[]>(this.apiUrl));
+  // Get all messages
+  getAllMessages(): ContactMessage[] {
+    const stored = localStorage.getItem(this.storageKey);
+    return stored ? JSON.parse(stored) : [];
   }
 
-  // Create a new user/message
-  async addUser(user: User): Promise<User> {
-    return firstValueFrom(this.http.post<User>(this.apiUrl, user));
+  // Save a message
+  saveMessage(msg: ContactMessage) {
+    const messages = this.getAllMessages();
+    messages.push(msg);
+    localStorage.setItem(this.storageKey, JSON.stringify(messages));
   }
 
-  // Update user/message
-  async updateUser(id: number, user: User): Promise<User> {
-    return firstValueFrom(this.http.put<User>(`${this.apiUrl}/${id}`, user));
+  // Export messages as JSON string
+  exportMessages(): string {
+    return JSON.stringify(this.getAllMessages(), null, 2);
   }
 
-  // Delete user/message
-async deleteUser(id: number): Promise<void> {
-  await firstValueFrom(this.http.delete<void>(`${this.apiUrl}/${id}`));
-}
-
+  // Clear all messages
+  clearMessages() {
+    localStorage.removeItem(this.storageKey);
+  }
 }

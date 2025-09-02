@@ -11,7 +11,7 @@ import { PortfolioService, SkillCategory } from '../../services/portfolio.servic
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="section-title">Skills & Technologies</h2>
-          <p class="section-subtitle">Technologies I work with</p>
+          <p class="section-subtitle">🌐 “The technologies I speak fluently (no Google Translate needed 😉).”</p>
         </div>
         
         <div class="row mt-5">

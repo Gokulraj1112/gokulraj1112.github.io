@@ -12,7 +12,7 @@ import { PortfolioService, About } from '../../services/portfolio.service';
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">Get to know me better</p>
+            <p class="section-subtitle">💻 “Where design meets development, that’s where you’ll find me.”</p>
           </div>
         </div>
         
