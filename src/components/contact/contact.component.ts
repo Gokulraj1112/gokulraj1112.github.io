@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -11,14 +11,11 @@ import { FormsModule } from '@angular/forms';
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="section-title">Get in Touch</h2>
-          <p class="section-subtitle">
-
-              🚀 “From concept to creation, every journey starts with hello.”
-            </p>
+          <p class="section-subtitle">🚀 From concept to creation, every journey starts with hello.</p>
         </div>
 
         <div class="form-wrapper">
-          <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
             <div class="form-group">
               <input type="text" name="name" [(ngModel)]="formData.name" placeholder="Your Name" required />
             </div>
@@ -26,15 +23,24 @@ import { FormsModule } from '@angular/forms';
               <input type="email" name="email" [(ngModel)]="formData.email" placeholder="Your Email" required />
             </div>
             <div class="form-group">
+              <input type="tel" name="phone" [(ngModel)]="formData.phone" placeholder="Your Contact Number" required />
+            </div>
+            <div class="form-group">
               <textarea name="message" [(ngModel)]="formData.message" placeholder="Your Message" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn-submit">Send Message</button>
+            <button type="submit" class="btn-submit" [disabled]="loading || contactForm.invalid">
+              {{ loading ? 'Sending...' : 'Send Message' }}
+            </button>
           </form>
+
+          <!-- Success & Error Messages -->
+          <p *ngIf="successMessage" class="success-msg">{{ successMessage }}</p>
+          <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
         </div>
       </div>
     </section>
   `,
-  styles: [`
+    styles: [`
     .bg-dark-theme {
       background-color: #111;
       color: #f0f0f0;
@@ -117,6 +123,19 @@ import { FormsModule } from '@angular/forms';
       box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
     }
 
+    .success-msg {
+      margin-top: 1rem;
+      color: #00ff9d;
+      font-weight: 600;
+      text-align: center;
+    }
+    .error-msg {
+      margin-top: 1rem;
+      color: #ff4d6d;
+      font-weight: 600;
+      text-align: center;
+    }
+
     @media (max-width: 768px) {
       .section-title { font-size: 2.2rem; }
       .form-wrapper { padding: 1.5rem; }
@@ -127,11 +146,41 @@ export class ContactComponent {
   formData = {
     name: '',
     email: '',
+    phone: '',
     message: ''
   };
 
-  onSubmit() {
-    console.log('Form submitted:', this.formData);
-    alert('Message sent successfully!');
+  loading = false;
+  successMessage = '';
+  errorMessage = '';
+
+  async onSubmit(form: NgForm) {
+    if (form.invalid) return;
+
+    this.loading = true;
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    try {
+      const response = await fetch("https://formspree.io/f/myzddpaa", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"   // 🔑 Important for Formspree
+        },
+        body: JSON.stringify(this.formData)
+      });
+
+      if (response.ok) {
+        this.successMessage = "✅ Thank you! Your message has been sent.";
+        form.resetForm();
+      } else {
+        this.errorMessage = "❌ Oops! Something went wrong.";
+      }
+    } catch (error) {
+      this.errorMessage = "⚠️ Network error. Please try again.";
+    } finally {
+      this.loading = false;
+    }
   }
 }
